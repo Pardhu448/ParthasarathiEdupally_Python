@@ -19,6 +19,8 @@ from src import PosCalProcess
 transac_date = '23-09-2018'
 
 sep23rd_snapshot  = ProcCalProcess.Process(date = transac_date).GetPositions()
+print(sep23rd_snapshot.GetLowestVol())
+print(sep23rd_snapshot.GetLargetstVol())
 ```
 
 ## Requirements
