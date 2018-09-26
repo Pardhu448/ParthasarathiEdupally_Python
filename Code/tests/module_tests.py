@@ -3,7 +3,7 @@ import pandas as pd
 
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-from src import utils
+from src import calfunctions
 
 class module_tests(unittest.TestCase):
     '''
@@ -21,7 +21,7 @@ class module_tests(unittest.TestCase):
             'AccountType': ['E', 'E'], 
             'TransactionQuantity': [1000, 1000], 
             'Quantity': [100000, -100000]})
-        self.assertEqual(sum(utils.cal_eod_transac(input_dframe)['EodQuantity']), 0)
+        self.assertEqual(sum(calfunctions.cal_eod_transac(input_dframe)['EodQuantity']), 0)
 
 if __name__ == '__main__':
 
