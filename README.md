@@ -15,10 +15,13 @@ Steps to use this module:
 
 ```python
 #To query instruments with largest and lowest net transaction volume 
-from src import PosCalProcess 
-transac_date = '23-09-2018'
 
-sep23rd_snapshot  = ProcCalProcess.Process(date = transac_date).GetPositions()
+from src import PosCalProcess 
+
+transac_date = '23-09-2018'
+sep23rd_process = ProcCalProcess.Process(date = transac_date)
+
+sep23rd_snapshot  = sep23rd_process.GetPositions()
 print(sep23rd_snapshot.GetLowestVol())
 print(sep23rd_snapshot.GetLargetstVol())
 ```
@@ -34,7 +37,7 @@ print(sep23rd_snapshot.GetLargetstVol())
 
 ## Future extension
 
-Classes are designed to accomodate future extension to aggregate 'Process' class to 
-get Eod transaction status considering past dates or range of dates also.
+Classes are designed to accomodate future extension to aggregate 'Process' objects for calculating Eod transaction status considering past dates or range of dates also.
 
+Also basic unit of computation is on pandas dataframes as it is effecient and can be parallelized with apply.
 
