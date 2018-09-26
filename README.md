@@ -5,22 +5,21 @@ This module calculates EoD positions of given instruments based on transactions 
 ## Getting Started
 Steps to use this module:
 1. Download the repository into local machine
-2. Creating virual evironment:
-   - This stepis  note required if using Anaconda Python3
+2. Creating virual evironment (This step note required if using Anaconda Python3):
    - Make sure to create virtual environment using conda with file requirements.yml
-   - command: conda env create -f requirements.yml
+   - *command:* conda env create -f requirements.yml
 
 3. Populate both input files into data directory 
-4. Run sample usage file 'CalEodPosition.py'
+4. Run sample usage file **'CalEodPosition.py'**
 
 
-'''
+```python
 #To query instruments with largest and lowest net transaction volume 
 from src import PosCalProcess 
 transac_date = '23-09-2018'
 
 sep23rd_snapshot  = ProcCalProcess.Process(date = transac_date).GetPositions()
-'''
+```
 
 ## Requirements
 1. Anaconda Python3
@@ -29,7 +28,7 @@ sep23rd_snapshot  = ProcCalProcess.Process(date = transac_date).GetPositions()
 
 1. test_caleodtransac : To test function 'cal_eod_transac' function with dummy input. 
 
-To run:  python tests/module__tests.py -v
+2. *To run:*  python tests/module_tests.py -v
 
 ## Future extension
 
