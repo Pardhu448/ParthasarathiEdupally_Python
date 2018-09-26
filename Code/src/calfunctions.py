@@ -1,6 +1,11 @@
 import pandas as pd 
 
 def cal_eod_transac(groupxy):
+    '''
+    Calculated eod transaction quantity and delta of transaction quantity 
+    for each instrument and returns DataFrame with all this information.
+    '''
+
     gr_type = set(groupxy['AccountType'])
     
     if (gr_type <= {'E'}):
@@ -28,7 +33,9 @@ def cal_eod_transac(groupxy):
 def combine_data(pos_data, transac_data):
     '''
     Checks for transaction history for all the instruments in positions data.
-    And replaces NAs of positions having no transactions with zero and 'S' appropriately.
+    Replaces NAs of positions having no transactions with zero 
+    and 'S' appropriately. Returns merged dataframe useful for quickly calculate 
+    Eod transaction quantity.
     '''
     pos_instru = set(pos_data['Instrument'].unique())
     transac_instru = set(transac_data['Instrument'].unique())

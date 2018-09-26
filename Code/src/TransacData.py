@@ -1,14 +1,13 @@
 import pandas as pd 
-from src import core, utils
+from src import core, calfunctions
 from os.path import isfile, join
 from os import listdir
 
 class Transactions(core.transaction):
     ''' 
     Class to store transaction data at a time stamp
-    for a particular instrument. Contains attributes like Initial Position, 
-    Account Type, Net Transaction, Transaction History etc for a particular
-    Instrument.
+    for all instruments. Contains attributes like Initial Position, 
+    Account Type, Net Transaction, Transaction History etc
     '''
     
     @staticmethod
@@ -31,18 +30,17 @@ class Transactions(core.transaction):
     
     def get_snapshot(self, **kwargs):
         '''
-        Returns multi-indexed series of 'TransacInfo' objects
-        for a given date.
+        Returns a DataFrame with Eod transaction quantity and delta information.
         '''
         transac_file_path = 'data/transactions'
         pos_file_path = 'data/positions'
         transactions_data = Transactions.get_file(transac_file_path)
         positions_data = Transactions.get_file(pos_file_path)
         
-        merged_data = utils.combine_data(positions_data, transactions_data)
+        merged_data = calfunctions.combine_data(positions_data, transactions_data)
 
         snap_eod = merged_data.groupby(['Instrument', 
-            'AccountType']).apply(utils.cal_eod_transac).reset_index()
+            'AccountType']).apply(calfunctions.cal_eod_transac).reset_index()
         snap_eod = snap_eod.rename(columns = {'EodQuantity' : 
             'Quantity'}).drop(['level_2'], axis = 1)
         

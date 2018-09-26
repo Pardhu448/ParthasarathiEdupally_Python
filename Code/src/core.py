@@ -12,7 +12,8 @@ class transaction:
     def __add__(self, other):
         '''
         Addition of two transaction objects is just combining two snapshot of 
-        transactions through addition of transactions
+        transactions through pandas merging and aggregating and appending history
+        attribute..
         '''
         pass
 
